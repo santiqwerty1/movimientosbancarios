@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "movimientosbancarios"
+version = "0.1.0"
+description = "CLI para extraer movimientos bancarios desde PDFs y almacenarlos en SQLite"
+authors = [{name = "Auto Generated"}]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pdfplumber>=0.11.0",
+    "typer>=0.9",
+    "rich>=13.7",
+    "python-dateutil>=2.9"
+]
+
+[project.scripts]
+movimientos = "movimientos.cli:app"
+
+[tool.hatch.build.targets.sdist]
+include = ["src/movimientos"]
+
+[tool.hatch.build.targets.wheel]
+packages = [{include = "movimientos", from = "src"}]
