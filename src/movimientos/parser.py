@@ -53,7 +53,10 @@ def parse_date(value: str) -> datetime.date:
 
 def parse_line_with_amount(line: str, provider: str, currency: str = "ARS", source_file: str = "") -> Transaction | None:
     pattern = re.compile(
-        r"(?P<date>\d{1,2}[/-]\d{1,2}[/-]\d{2,4})\s+(?P<description>.+?)\s+(?P<amount>[+-]?\d+[\d.,]*)\s*(?P<balance>[+-]?\d+[\d.,]*)?",
+        r"(?P<date>\d{1,2}[/-]\d{1,2}[/-]\d{2,4})\s+"
+        r"(?P<description>.+?)\s+"
+        r"(?P<amount>[+-]?(?:\$|ARS\$?)?\d+[\d.,]*)\s*"
+        r"(?P<balance>[+-]?(?:\$|ARS\$?)?\d+[\d.,]*)?",
         re.IGNORECASE,
     )
     match = pattern.search(line)
