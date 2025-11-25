@@ -14,7 +14,10 @@ Aplicación de línea de comandos para cargar PDFs con resúmenes de distintos b
 python -m venv .venv
 source .venv/bin/activate
 
-# Instalar dependencias
+# Instalar el paquete en modo editable (incluye las dependencias)
+pip install -e .
+
+# Si tu red bloquea PyPI, instala las dependencias manualmente o usa un mirror local
 pip install -r requirements.txt
 
 # Procesar uno o más PDF y guardarlos en data/transactions.db
@@ -22,6 +25,13 @@ python -m movimientos.cli ingest /ruta/a/archivo.pdf
 
 # Ver los movimientos almacenados
 python -m movimientos.cli show
+```
+
+Si no puedes instalar el paquete, puedes ejecutar los comandos con `PYTHONPATH=src` para que Python
+encuentre el código fuente local, por ejemplo:
+
+```bash
+PYTHONPATH=src python -m movimientos.cli show
 ```
 
 ## Cómo funciona

@@ -53,7 +53,10 @@ def show(db_path: Optional[Path] = typer.Option(None, help="Ruta al archivo SQLi
     chosen_db = db_path or DEFAULT_DB_PATH
     rows = list_transactions(chosen_db)
     if not rows:
-        console.print("No hay movimientos cargados todavía")
+        console.print(
+            "No hay movimientos cargados todavía. Usa 'python -m movimientos.cli ingest <archivo.pdf>' "
+            "para procesar tus resúmenes."
+        )
         raise typer.Exit(code=0)
 
     table = Table(show_lines=True)
