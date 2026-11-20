@@ -9,3 +9,4 @@ venv/
 data/
 *.pdf
 .DS_Store
+/.env.local
